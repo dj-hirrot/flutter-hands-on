@@ -53,12 +53,13 @@ class MyHomePage extends StatelessWidget {
 
     if (products.isEmpty) {
       return Container(
-        child: GridView.builder(gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          crossAxisSpacing: 16,
-          mainAxisSpacing: 16,
-          childAspectRatio: 0.7,
-        ),
+        child: GridView.builder(
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              crossAxisSpacing: 16,
+              mainAxisSpacing: 16,
+              childAspectRatio: 0.7,
+            ),
             itemCount: 6,
             itemBuilder: (context, index) {
               return Container(
@@ -68,7 +69,23 @@ class MyHomePage extends StatelessWidget {
             }),
       );
     } else {
-      return Center(child: Text("products"));
+      return Container(
+        child: GridView.builder(
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            crossAxisSpacing: 16,
+            mainAxisSpacing: 16,
+            childAspectRatio: 0.7,
+          ),
+          itemCount: products.length,
+          itemBuilder: (context, index) {
+            return Container(
+              margin: EdgeInsets.all(16),
+              child: Image.network(products[index].sampleImageUrl),
+            );
+          },
+        ),
+      );
     }
   }
 }

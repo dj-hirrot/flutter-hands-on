@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_hands_on/stores/product_list_store.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_hands_on/components/product_card.dart';
 
 // main()はFlutterアプリケーションのエントリポイントです
 // main()の中で、runAppにルートとなるウィジェットを格納して呼ぶ必要があります
@@ -79,10 +80,7 @@ class MyHomePage extends StatelessWidget {
           ),
           itemCount: products.length,
           itemBuilder: (context, index) {
-            return Container(
-              margin: EdgeInsets.all(16),
-              child: Image.network(products[index].sampleImageUrl),
-            );
+            return ProductCard(product: products[index]);
           },
         ),
       );
